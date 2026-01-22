@@ -5,6 +5,9 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
+  # Permettre à SDDM de lire /etc/shadow
+  security.pam.services.sddm.unixAuth = true;
+
   # Network
   networking.networkmanager.enable = true;
 

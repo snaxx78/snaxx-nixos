@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
-
 {
   # Display Manager
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 
   # Hyprland
   programs.hyprland = {
@@ -11,9 +12,19 @@
     xwayland.enable = true;
   };
 
-  # Lien vers la session Hyprland pour SDDM
-  environment.etc."sddm/wayland-sessions/hyprland.desktop".source = 
-    "${pkgs.hyprland}/share/wayland-sessions/hyprland.desktop";
+  # FIX CRITIQUE : Configuration PAM pour SDDM
+  security.pam.services.sddm.enableGnomeKeyring = lib.mkForce false;
+  security.pam.services.sddm-greeter.enableGnomeKeyring = lib.mkForce false;
+  
+  # Permettre à SDDM d'accéder au shadow password
+  users.users.sddm.group = "sddm";
+  users.groups.sddm = {};
+
+  # XDG Portal pour Hyprland
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
 
   # Audio
   services.pulseaudio.enable = false;

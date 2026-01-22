@@ -8,6 +8,7 @@
     ../../nixos/profiles/desktop-hyprland-sddm.nix
     ../../nixos/profiles/docker.nix
     ../../nixos/profiles/wireshark.nix
+    ../../nixos/profiles/exegol.nix
 ];
 
 # Machine specific : boot + hostname
