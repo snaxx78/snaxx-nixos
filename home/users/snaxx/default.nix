@@ -6,14 +6,23 @@
   home.homeDirectory = "/home/snaxx";
   home.stateVersion = "25.11";
 
+  imports = [
+    ./shell-zsh-p10k.nix
+    ./terminal-kitty.nix
+    ./cli-fastfetch.nix
+    ./desktop-hyprland.nix
+  ];
+
+  programs.git.enable = true;
+
   # Let Home Manager manage itself
   programs.home-manager.enable = true;
+  xdg.enable = true;
 
   # Packages user
   home.packages = with pkgs; [
     # Terminal utils
     kitty
-    starship
     fzf
     zoxide
     eza
@@ -23,7 +32,6 @@
     btop
     htop
     fastfetch
-    neofetch
 
     # Dev
     neovim
@@ -33,18 +41,13 @@
     python3
 
     # Apps
-    discord
-    spotify
-    obsidian
-    vlc
-    chromium
+    deezer-enhanced
 
     # Hyprland
-    waybar
-    rofi
     swww
     hyprlock
     hyprpaper
+    hypridle
     brightnessctl
     playerctl
     pamixer
@@ -52,7 +55,7 @@
     blueman
     grim
     slurp
-    wl-clipboard
+    wl-clipboard	
 
     # Archives
     unzip
@@ -68,6 +71,5 @@
     # Zsh plugins
     zsh-you-should-use
     zsh-completions
-    zsh-powerlevel10k
   ];
 }

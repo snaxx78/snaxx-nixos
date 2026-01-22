@@ -15,7 +15,7 @@
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    lib = nixpkgs.lib;
   in
   {
     # Config NixOS pour ton laptop
@@ -24,14 +24,14 @@
       specialArgs = { inherit inputs; };
       modules = [
         # Config système
-        ./hosts/laptop
+        ./hosts/laptop/default.nix
 
         # Home Manager comme module NixOS
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.snaxx = import ./home/default.nix;
+          home-manager.users.snaxx = import ./home/users/snaxx/default.nix;
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];
