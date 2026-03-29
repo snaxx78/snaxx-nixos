@@ -1,0 +1,14 @@
+[SddmGreeterTheme]
+Name=Catppuccin Mocha
+Description=Catppuccin theme for SDDM
+Author=Snaxx
+Copyright=(c) 2026
+License=GPLv3
+Type=sddm-theme
+Version=1.0
+Website=https://github.com/snaxx78
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Theme-Id=catppuccin-mocha
+Theme-API=2.0

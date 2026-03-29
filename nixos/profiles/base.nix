@@ -33,6 +33,6 @@
 
   # Base pkgs
   environment.systemPackages = with pkgs; [
-	neovim git wget curl obsidian discord firefox
+	neovim git wget curl obsidian file firefox hyprland binaryninja-free
   ];
 }
